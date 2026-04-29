@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Vcube Admin Portal</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <!-- Top-Left Logos -->
+    <div class="top-left-logos">
+        <div class="logo-circle">
+            <img src="vamsi.png" alt="Vamsi">
+        </div>
+        <div class="logo-circle">
+            <img src="ak.png" alt="AK">
+        </div>
+    </div>
+
+    <div class="overlay">
+        <h1>Private Video Upload Engine</h1>
+
+        <!-- Secure Gatekeeper Layout -->
+        <div id="login-gate" class="menu-vertical">
+            <h2 style="color: red; margin: 0;">Restricted Administrator Area</h2>
+            <div
+                style="display: flex; flex-direction: column; gap: 15px; align-items: center; width: 100%; max-width: 400px; background: rgba(0,0,0,0.8); padding: 20px; border-radius: 10px; border: 2px solid red;">
+                <label style="color: white; font-weight: bold;">Username:</label>
+                <input type="text" id="adminUsername" placeholder="admin"
+                    style="padding: 10px; border-radius: 5px; width: 100%; font-size: 16px; text-align: center;">
+                <label style="color: white; font-weight: bold;">Enter Master Password:</label>
+                <input type="password" id="adminPassword" placeholder="••••••••"
+                    style="padding: 10px; border-radius: 5px; width: 100%; font-size: 16px; text-align: center;">
+                <button id="unlockBtn"
+                    style="padding: 15px 30px; background: red; color: white; border-radius: 10px; font-weight: bold; cursor: pointer; border: none; font-size: 16px; width: 100%;">Unlock
+                    Portal</button>
+            </div>
+        </div>
+
+        <!-- Hidden Upload Menu -->
+        <div id="admin-menu" class="menu-vertical hidden" style="position: relative;">
+            <button id="logoutBtn" style="position: absolute; top: 10px; right: 10px; padding: 10px 15px; background: red; color: white; border-radius: 5px; font-weight: bold; cursor: pointer; border: none; font-size: 14px;">Logout</button>
+            <h2 style="color: #00ff88; margin: 0;">Secure Connection Active</h2>
+
+            <div
+                style="display: flex; flex-direction: column; gap: 15px; align-items: center; width: 100%; max-width: 800px; background: rgba(0,0,0,0.5); padding: 20px; border-radius: 10px;">
+
+                <label style="color: white; font-weight: bold;">Select Batch & Folder Route:</label>
+                <select id="folderSelect" style="padding: 10px; border-radius: 5px; font-weight: bold; width: 100%; max-width: 400px;">
+                    <!-- Hardcoded destinations mirroring the student UI -->
+                    <option value="Demo">Global Demo</option>
+                    <option value="Batch-150-Demo">Batch-150 Demo</option>
+                    <option value="Batch-150-AWS">Batch-150 AWS</option>
+                    <option value="Batch-150-DevOps">Batch-150 DevOps</option>
+                    <option value="Batch-151-Demo">Batch-151 Demo</option>
+                    <option value="Batch-151-AWS">Batch-151 AWS</option>
+                    <option value="Batch-151-DevOps">Batch-151 DevOps</option>
+                </select>
+
+                <div style="display: flex; flex-direction: row; gap: 30px; width: 100%; justify-content: center; flex-wrap: wrap;">
+                    <!-- Video Upload Side -->
+                    <div style="flex: 1; min-width: 250px; background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px;">
+                        <h3 style="color: #00ff88; text-align: center; margin-top: 0;">🎬 Video Upload</h3>
+                        <label style="color: white; font-weight: bold; display: block; margin-bottom: 5px;">Select Video File (.mp4):</label>
+                        <input type="file" id="adminVideoUpload" accept="video/*"
+                            style="color: white; font-weight: bold; background: rgba(0,0,0,0.8); padding: 10px; border-radius: 5px; width: 100%; box-sizing: border-box;">
+
+                        <button id="uploadBtn"
+                            style="padding: 15px; background: #00ff88; color: black; border-radius: 10px; font-weight: bold; cursor: pointer; border: none; font-size: 16px; margin-top: 15px; width: 100%;">Upload Video</button>
+                    </div>
+
+                    <!-- Document Upload Side -->
+                    <div style="flex: 1; min-width: 250px; background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px;">
+                        <h3 style="color: #00bdff; text-align: center; margin-top: 0;">📄 Document Upload</h3>
+                        <label style="color: white; font-weight: bold; display: block; margin-bottom: 5px;">Select Document (.pdf):</label>
+                        <input type="file" id="adminDocUpload" accept=".pdf"
+                            style="color: white; font-weight: bold; background: rgba(0,0,0,0.8); padding: 10px; border-radius: 5px; width: 100%; box-sizing: border-box;">
+
+                        <button id="uploadDocBtn"
+                            style="padding: 15px; background: #00bdff; color: black; border-radius: 10px; font-weight: bold; cursor: pointer; border: none; font-size: 16px; margin-top: 15px; width: 100%;">Upload Document</button>
+                    </div>
+                </div>
+
+                <div id="uploadStatus" style="color: orange; font-weight: bold; margin-top: 10px; text-align: center;">
+                </div>
+
+                <!-- NEW: Progress Feedback -->
+                <div id="progressContainer"
+                    style="width: 100%; height: 12px; background: rgba(255,255,255,0.1); border-radius: 6px; margin-top: 10px; display: none; overflow: hidden; border: 1px solid rgba(255,255,255,0.2);">
+                    <div id="progressBar"
+                        style="width: 0%; height: 100%; background: linear-gradient(90deg, #00ff88, #00bdff); transition: width 0.2s ease;">
+                    </div>
+                </div>
+                <div id="progressText"
+                    style="color: #00ff88; font-size: 13px; font-weight: bold; text-align: center; margin-top: 5px; display: none;">
+                    0% Uploaded
+                </div>
+            </div>
+
+            <!-- Manage / Delete Videos Section -->
+            <div
+                style="margin-top: 30px; width: 100%; max-width: 600px; background: rgba(0,0,0,0.5); padding: 20px; border-radius: 10px;">
+                <h3 style="color: white; text-align: center; margin-top: 0;">🗑️ Delete Files by Folder</h3>
+
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <label style="color: white; font-weight: bold;">Select Folder to Manage:</label>
+                    <select id="deletefolderSelect"
+                        style="padding: 10px; border-radius: 5px; font-weight: bold; width: 100%;">
+                        <option value="">-- Choose a Folder --</option>
+                        <option value="Demo">Global Demo</option>
+                        <option value="Batch-150-Demo">Batch-150 Demo</option>
+                        <option value="Batch-150-AWS">Batch-150 AWS</option>
+                        <option value="Batch-150-DevOps">Batch-150 DevOps</option>
+                        <option value="Batch-151-Demo">Batch-151 Demo</option>
+                        <option value="Batch-151-AWS">Batch-151 AWS</option>
+                        <option value="Batch-151-DevOps">Batch-151 DevOps</option>
+                    </select>
+                    <button id="loadFolderBtn"
+                        style="padding: 10px; background: #f0a500; color: black; border-radius: 8px; font-weight: bold; cursor: pointer; border: none; font-size: 15px;">
+                        📂 Load Files
+                    </button>
+                </div>
+
+                <div id="manageList" style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+
+</html>

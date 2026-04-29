@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>AWS DEVSECOPS LMS PORTAL</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Contact Info (Top-Left) -->
+    <div class="contact-container">
+        <button id="callUsBtn" class="call-us-btn">
+            <i class="fas fa-phone"></i> Call Us
+        </button>
+        <div id="contactCard" class="contact-card hidden">
+            <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <a href="tel:9014790362">9014790362</a>
+                <a href="https://wa.me/919014790362" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <a href="tel:8143291237">8143291237</a>
+                <a href="https://wa.me/918143291237" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Top-Left Logos -->
+    <div class="top-left-logos">
+        <div class="logo-circle vamsi-logo">
+            <img src="vamsi.png" alt="Vamsi">
+        </div>
+        <div class="logo-circle ak-logo">
+            <img src="ak.png" alt="AK">
+        </div>
+        <a href="https://madhukarreddyvenna.com/" target="_blank" class="logo-circle madhu-logo">
+            <img src="madhu.png" alt="Madhu">
+        </a>
+    </div>
+
+    <div class="overlay">
+        <img src="logo.png" alt="VCUBE Logo" class="center-logo">
+        <h1>WELCOME TO VCUBE AWS DEVSECOPS LMS PORTAL</h1>
+        
+        <!-- Main Menu -->
+        <div id="main-menu" class="menu">
+            <a href="#" id="videosBtn">Videos</a>
+            <a href="#" id="docsBtn">Documents</a>
+            <a href="#" id="mainDemoBtn">Demo</a>
+            <a href="admin.html" style="background: #222; color: orange; border: 2px solid orange;">AWS-Team</a>
+        </div>
+
+        <!-- Batches Menu (Initially Hidden) -->
+        <div id="batches-menu" class="menu hidden">
+            <a href="#" class="batchBtn" data-batch="Batch-150">Batch-150</a>
+            <a href="#" class="batchBtn" data-batch="Batch-151">Batch-151</a>
+            <a href="#" id="backBtnBatches" class="back-btn">Back</a>
+        </div>
+
+        <!-- Folders Menu (Initially Hidden) -->
+        <div id="folders-menu" class="menu-vertical hidden">
+            <h2 id="current-batch-title" style="color: white; margin: 0;"></h2>
+            <div class="menu">
+                <a href="#" class="folderBtn" data-folder="Demo" id="folderDemoBtn">Demo</a>
+                <a href="#" class="folderBtn" data-folder="AWS">AWS</a>
+                <a href="#" class="folderBtn" data-folder="DevOps">DevOps</a>
+            </div>
+            <a href="#" id="backBtnFolders" class="back-btn">Back</a>
+        </div>
+
+        <!-- Generic Video Section (Initially Hidden) -->
+        <div id="video-menu" class="menu-vertical hidden" style="width: 100%; max-width: 800px;">
+            <div style="display: flex; justify-content: center; align-items: center; width: 100%; position: relative; margin-bottom: 10px;">
+                <a href="#" id="backBtnVideo" class="back-btn" style="position: absolute; left: 0; padding: 10px 20px; font-size: 14px;">⬅ Back</a>
+                <h2 id="current-folder-title" style="color: white; margin: 0;">Watch Videos</h2>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 15px; align-items: center; width: 100%;">
+                <div id="videoList" style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; max-width: 800px;"></div>
+                <video id="videoPlayer" width="600" controls class="hidden" style="border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); margin-top: 10px; max-width: 100%;"></video>
+            </div>
+        </div>
+        
+
+        
+        <!-- Scrolling Placements Marquee -->
+        <div class="marquee-container">
+            <div class="marquee-content">
+                <!-- Item 1 -->
+                <div class="placement-card">
+                    <img src="placements/Shankar_oct_40_LPA_AWS.jpg" alt="Shankar">
+                    <div class="card-info">
+                        <div class="name">Shankar</div>
+                        <div class="lpa">40 LPA</div>
+                    </div>
+                </div>
+                <!-- Item 2 -->
+                <div class="placement-card">
+                    <img src="placements/Prudhvi_surya_18-5_20lpa_AWS.jpeg" alt="Prudhvi Surya">
+                    <div class="card-info">
+                        <div class="name">Prudhvi Surya</div>
+                        <div class="lpa">20 LPA</div>
+                    </div>
+                </div>
+                <!-- Item 3 -->
+                <div class="placement-card">
+                    <img src="placements/9LPA_AWS_DEVOPS_.jpg" alt="AWS DevOps">
+                    <div class="card-info">
+                        <div class="name">AWS DevOps</div>
+                        <div class="lpa">9 LPA</div>
+                    </div>
+                </div>
+                <!-- Item 4 -->
+                <div class="placement-card">
+                    <img src="placements/Madhu_AWS_NOV.jpg" alt="Madhu">
+                    <div class="card-info">
+                        <div class="name">Madhu</div>
+                        <div class="lpa">AWS Placed</div>
+                    </div>
+                </div>
+                <!-- Item 5 -->
+                <div class="placement-card">
+                    <img src="placements/Asha_june_AWS.jpeg" alt="Asha">
+                    <div class="card-info">
+                        <div class="name">Asha</div>
+                        <div class="lpa">AWS Placed</div>
+                    </div>
+                </div>
+                <!-- Item 6 -->
+                <div class="placement-card">
+                    <img src="placements/HARSHA_DEEP_3rd_week.jpeg" alt="Harsha Deep">
+                    <div class="card-info">
+                        <div class="name">Harsha Deep</div>
+                        <div class="lpa">AWS Placed</div>
+                    </div>
+                </div>
+                <!-- Item 7 -->
+                <div class="placement-card">
+                    <img src="placements/Divya_June.jpeg" alt="Divya">
+                    <div class="card-info">
+                        <div class="name">Divya</div>
+                        <div class="lpa">AWS Placed</div>
+                    </div>
+                </div>
+                <!-- Item 8 -->
+                <div class="placement-card">
+                    <img src="placements/Sanjana_25-5.jpeg" alt="Sanjana">
+                    <div class="card-info">
+                        <div class="name">Sanjana</div>
+                        <div class="lpa">AWS Placed</div>
+                    </div>
+                </div>
+                <!-- Item 9 -->
+                <div class="placement-card">
+                    <img src="placements/Srinu.jpg" alt="Srinu">
+                    <div class="card-info">
+                        <div class="name">Srinu</div>
+                        <div class="lpa">AWS Placed</div>
+                    </div>
+                </div>
+                <!-- Item 10 -->
+                <div class="placement-card">
+                    <img src="placements/Tarun_(3rd_week).jpeg" alt="Tarun">
+                    <div class="card-info">
+                        <div class="name">Tarun</div>
+                        <div class="lpa">AWS Placed</div>
+                    </div>
+                </div>
+                <!-- Item 11 -->
+                <div class="placement-card">
+                    <img src="placements/VARUN_3rd_week.jpeg" alt="Varun">
+                    <div class="card-info">
+                        <div class="name">Varun</div>
+                        <div class="lpa">AWS Placed</div>
+                    </div>
+                </div>
+
+                <!-- Item 12 -->
+                <div class="placement-card">
+                    <img src="placements/Jyothi Ch.jpg" alt="Jyothi Ch">
+                    <div class="card-info">
+                        <div class="name">Jyothi Ch</div>
+                        <div class="lpa">AWS Placed</div>
+                    </div>
+                </div>
+                <!-- Item 13 -->
+                <div class="placement-card">
+                    <img src="placements/HANUMANTHU.jpeg" alt="Hanumanthu">
+                    <div class="card-info">
+                        <div class="name">Hanumanthu</div>
+                        <div class="lpa">AWS Placed</div>
+                    </div>
+                </div>
+                <!-- Item 14 -->
+                <div class="placement-card">
+                    <img src="placements/K.Ram Mohan.jpg" alt="K.Ram Mohan">
+                    <div class="card-info">
+                        <div class="name">K.Ram Mohan</div>
+                        <div class="lpa">AWS Placed</div>
+                    </div>
+                </div>
+                <!-- Item 15 -->
+                <div class="placement-card">
+                    <img src="placements/Mahesh Akki.jpg" alt="Mahesh Akki">
+                    <div class="card-info">
+                        <div class="name">Mahesh Akki</div>
+                        <div class="lpa">AWS Placed</div>
+                    </div>
+                </div>
+                <!-- Item 16 -->
+                <div class="placement-card">
+                    <img src="placements/Raviteja.jpeg" alt="Raviteja">
+                    <div class="card-info">
+                        <div class="name">Raviteja</div>
+                        <div class="lpa">AWS Placed</div>
+                    </div>
+                </div>
+                <!-- Item 17 -->
+                <div class="placement-card">
+                    <img src="placements/Sagar.jpeg" alt="Sagar">
+                    <div class="card-info">
+                        <div class="name">Sagar</div>
+                        <div class="lpa">AWS Placed</div>
+                    </div>
+                </div>
+                <!-- Item 18 -->
+                <div class="placement-card">
+                    <img src="placements/Satwika.jpg" alt="Satwika">
+                    <div class="card-info">
+                        <div class="name">Satwika</div>
+                        <div class="lpa">AWS Placed</div>
+                    </div>
+                </div>
+                <!-- Item 19 -->
+                <div class="placement-card">
+                    <img src="placements/Sreenath.jpg" alt="Sreenath">
+                    <div class="card-info">
+                        <div class="name">Sreenath</div>
+                        <div class="lpa">AWS Placed</div>
+                    </div>
+                </div>
+                <!-- Item 20 -->
+                <div class="placement-card">
+                    <img src="placements/AWS DevSecOps.jpeg" alt="AWS DevSecOps">
+                    <div class="card-info">
+                        <div class="name">AWS DevSecOps</div>
+                        <div class="lpa">9 LPA</div>
+                    </div>
+                </div>
+                <!-- Item 21 -->
+                <div class="placement-card">
+                    <img src="placements/Placed_white_Posters - 2026-02-13T160439.227.jpg" alt="Student">
+                    <div class="card-info">
+                        <div class="name">Placed Student</div>
+                        <div class="lpa">AWS Placed</div>
+                    </div>
+                </div>
+                <!-- Item 22 -->
+                <div class="placement-card">
+                    <img src="placements/Placed_white_Posters - 2026-03-02T151649.086.jpg" alt="Student">
+                    <div class="card-info">
+                        <div class="name">Placed Student</div>
+                        <div class="lpa">AWS Placed</div>
+                    </div>
+                </div>
+                <!-- Item 23 -->
+                <div class="placement-card">
+                    <img src="placements/Placed_white_Posters - 2026-03-13T183322.253.jpg" alt="Student">
+                    <div class="card-info">
+                        <div class="name">Placed Student</div>
+                        <div class="lpa">AWS Placed</div>
+                    </div>
+                </div>
+
+                <!-- Duplicate Items for seamless scrolling -->
+                <div class="placement-card">
+                    <img src="placements/Shankar_oct_40_LPA_AWS.jpg" alt="Shankar">
+                    <div class="card-info">
+                        <div class="name">Shankar</div>
+                        <div class="lpa">40 LPA</div>
+                    </div>
+                </div>
+                <div class="placement-card">
+                    <img src="placements/Prudhvi_surya_18-5_20lpa_AWS.jpeg" alt="Prudhvi Surya">
+                    <div class="card-info">
+                        <div class="name">Prudhvi Surya</div>
+                        <div class="lpa">20 LPA</div>
+                    </div>
+                </div>
+                <div class="placement-card">
+                    <img src="placements/9LPA_AWS_DEVOPS_.jpg" alt="AWS DevOps">
+                    <div class="card-info">
+                        <div class="name">AWS DevOps</div>
+                        <div class="lpa">9 LPA</div>
+                    </div>
+                </div>
+                <div class="placement-card">
+                    <img src="placements/Madhu_AWS_NOV.jpg" alt="Madhu">
+                    <div class="card-info">
+                        <div class="name">Madhu</div>
+                        <div class="lpa">AWS Placed</div>
+                    </div>
+                </div>
+                <div class="placement-card">
+                    <img src="placements/Asha_june_AWS.jpeg" alt="Asha">
+                    <div class="card-info">
+                        <div class="name">Asha</div>
+                        <div class="lpa">AWS Placed</div>
+                    </div>
+                </div>
+                <div class="placement-card">
+                    <img src="placements/HARSHA_DEEP_3rd_week.jpeg" alt="Harsha Deep">
+                    <div class="card-info">
+                        <div class="name">Harsha Deep</div>
+                        <div class="lpa">AWS Placed</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+    <script src="index.js"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+{
+    "Batch-150-AWS": [
+        {
+            "title": "AWS CLOUD BOOK latest ",
+            "filename": "AWS_CLOUD_BOOK_latest_.doc_conv_1_2_1_1_1.pdf"
+        },
+        {
+            "title": "2026-04-24 12-05-38",
+            "filename": "2026-04-24_12-05-38.mp4"
+        },
+        {
+            "title": "securitybook",
+            "filename": "securitybook.docx-1.pdf_1.pdf"
+        }
+    ],
+    "Demo": [
+        {
+            "title": "Welcome Class",
+            "filename": "class.mp4"
+        },
+        {
+            "title": "AWS CLOUD BOOK latest ",
+            "filename": "AWS_CLOUD_BOOK_latest_.doc_conv_1_2_1_1_1.pdf"
+        },
+        {
+            "title": "class",
+            "filename": "class.mp4"
+        },
+        {
+            "title": "AWS-HACKTHON-DOCUMENTION (1)",
+            "filename": "AWS-HACKTHON-DOCUMENTION_1.pdf"
+        }
+    ],
+    "Batch-151-DevOps": [
+        {
+            "title": "DevOps Introduction",
+            "filename": "sample.mp4"
+        }
+    ],
+    "Batch-151-AWS": [
+        {
+            "title": "GMT20260422-054037_Recording_1920x1080",
+            "filename": "GMT20260422-054037_Recording_1920x1080.mp4"
+        }
+    ],
+    "Batch-150-Demo": [
+        {
+            "title": "GMT20260423-053615_Recording_1920x1080",
+            "filename": "GMT20260423-053615_Recording_1920x1080.mp4"
+        },
+        {
+            "title": "securitybook",
+            "filename": "securitybook.docx-1.pdf.pdf"
+        }
+    ]
+}
