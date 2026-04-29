@@ -28,3 +28,4 @@ HEALTHCHECK --interval=30s --timeout=10s --retries=3 \
     CMD curl -f http://localhost:5000/health || exit 1
 
 CMD ["python", "server.py"]
+
