@@ -14,6 +14,10 @@ env:
   EKS_CLUSTER_NAME: ${{ secrets.EKS_CLUSTER_NAME }}
 
 jobs:
+
+  # -------------------------------
+  # BUILD & PUSH TO ECR
+  # -------------------------------
   build:
     name: Build & Push to ECR
     runs-on: ubuntu-latest
@@ -36,7 +40,7 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v2
 
-      - name: Build, Tag, Push Image
+      - name: Build, Tag & Push Image
         id: build-image
         run: |
           IMAGE_URI=${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}
@@ -49,6 +53,9 @@ jobs:
 
           echo "image=$IMAGE_URI" >> $GITHUB_OUTPUT
 
+  # -------------------------------
+  # DEPLOY TO ECS
+  # -------------------------------
   deploy-ecs:
     name: Deploy to ECS
     runs-on: ubuntu-latest
@@ -69,6 +76,9 @@ jobs:
             --service ${{ env.ECS_SERVICE }} \
             --force-new-deployment
 
+  # -------------------------------
+  # DEPLOY TO EKS
+  # -------------------------------
   deploy-eks:
     name: Deploy to EKS
     runs-on: ubuntu-latest
@@ -85,11 +95,23 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
 
+      - name: Install kubectl
+        run: |
+          curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"
+          chmod +x kubectl
+          sudo mv kubectl /usr/local/bin/
+
       - name: Update kubeconfig
         run: |
           aws eks update-kubeconfig --name ${{ env.EKS_CLUSTER_NAME }}
 
+      # Apply Kubernetes manifests (Deployment + Service)
+      - name: Apply Kubernetes Manifests
+        run: |
+          kubectl apply -f k8s/
+
+      # Update image in deployment
       - name: Deploy to Kubernetes
         run: |
-          kubectl set image deployment/my-app my-container=${{ needs.build.outputs.image }}
-          kubectl rollout status deployment/my-app
+          kubectl set image deployment/node-app node-container=${{ needs.build.outputs.image }} -n default
+          kubectl rollout status deployment/node-app -n default
